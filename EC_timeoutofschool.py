@@ -1,6 +1,6 @@
 #With this programm you can calculate the time you are out of the school at EC Boxmeer.
 
-debug = "True"
+debug = "False" #Let this program print the hours and some more info.
 
 aantal_uren_invoer = int(input("Until which hour do you have today? Only insert values 1 till 9."))
 
@@ -50,6 +50,6 @@ rest_minuten = (aantal_minuten+510) % 60
 if rest_minuten == 0: #to let python display times like 11:00 correctly.
     rest_minuten = "00"
 
-eindtijd = str(totaal_uren) + ":" + str(rest_minuten)
+eindtijd = str(totaal_uren) + ":" + str(rest_minuten) #The time you're out of school.
 
 print("You're out today at",eindtijd)
