@@ -45,7 +45,7 @@ else:
 aantal_minuten = aantal_uren * een_uur
 
 totaal_uren = int((aantal_minuten+510)/60)  #510 minutes are the eight hours and 30 minutes from the time when the school begins.
-rest_minuten = (aantal_minuten+510) % 60
+rest_minuten = int(aantal_minuten+510) % 60
 
 if rest_minuten == 0: #to let python display times like 11:00 correctly.
     rest_minuten = "00"
