@@ -6,7 +6,7 @@ aantal_uren_invoer = int(input("Until which hour do you have today? Only insert 
 
 minirooster = input("Do you have minirooster (y/n)")
 
-if minirooster == "y":  #How loang a school hour is with or without minirooster.
+if minirooster == "y":  #How long a school hour is with or without minirooster.
     een_uur = 40
 elif minirooster == "n":
     een_uur = 50
