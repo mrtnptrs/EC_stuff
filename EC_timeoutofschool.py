@@ -34,30 +34,30 @@ if aantal_uren_invoer == 1 or aantal_uren_invoer == 2 or aantal_uren_invoer == 3
         print(aantal_uren, "  1, 2, 3")
 
 elif aantal_uren_invoer>=4 and aantal_uren_invoer<=6 and minirooster == "y":
-    aantal_uren = aantal_uren_invoer + 0.5   #Eventuele kleine pauze meerekenen.
-    pauze_tijd = 20
+    aantal_uren = aantal_uren_invoer   
+    pauze_tijd = 20 #Eventuele kleine pauze meerekenen.
     if debug == "True":
         print(aantal_uren, "  4, 5, y")
 
 elif aantal_uren_invoer>=4 and aantal_uren_invoer<=5 and minirooster == "n":
-    aantal_uren = aantal_uren_invoer + 0.4   #Eventuele kleine pauze meerekenen.
-    pauze_tijd = 20
+    aantal_uren = aantal_uren_invoer   
+    pauze_tijd = 20 #Eventuele kleine pauze meerekenen.
     if debug == "True":
         print(aantal_uren, "  4, 5, n")
 
 elif aantal_uren_invoer>6 and aantal_uren_invoer<=9 and minirooster == "y":
-    aantal_uren = aantal_uren_invoer + 1.25   #Eventuele kleine en grote pauze meerekenen.
-    pauze_tijd = 50
+    aantal_uren = aantal_uren_invoer  
+    pauze_tijd = 50 #Eventuele kleine en grote pauze meerekenen.
     if debug == "True":
         print(aantal_uren, "  six till nine, n")
 
 elif aantal_uren_invoer>=6 and aantal_uren_invoer<=9 and minirooster == "n":
-    aantal_uren = aantal_uren_invoer + 1   #Eventuele kleine en grote pauze meerekenen.
-    pauze_tijd = 50
+    aantal_uren = aantal_uren_invoer
+    pauze_tijd = 50 #Eventuele kleine en grote pauze meerekenen.
     if debug == "True":
         print(aantal_uren, "  six till nine, n")
 
-aantal_minuten = aantal_uren * een_uur
+aantal_minuten = aantal_uren * een_uur + pauze_tijd
 
 totaal_uren = int((aantal_minuten+510)/60)  #510 minutes are the eight hours and 30 minutes from the time when the school begins.
 rest_minuten = int(aantal_minuten+510) % 60
