@@ -5,6 +5,9 @@ calculate_day = "True" #Set to True to let it calculate your minutes you spend o
 
 aantal_uren_invoer = int(input("Until which hour do you have today? Only insert values 1 till 9."))
 
+if aantal_uren_invoer < 1 or aantal_uren_invoer > 9:
+    raise SystemExit("Error: input of numbers of hours is too low or too high, the operation will now be cancelled!")
+
 if calculate_day == "True":
     tussenuren_question = int(input("Hoeveel tussenuren heb je? (van 0 tot 8 uur maximaal, 0 is geen een.)"))
 
@@ -53,9 +56,6 @@ elif aantal_uren_invoer>=6 and aantal_uren_invoer<=9 and minirooster == "n":
     pauze_tijd = 50
     if debug == "True":
         print(aantal_uren, "  six till nine, n")
-
-else:
-    raise SystemExit("Error: input of numbers of hours is too low or too high, the operation will now be cancelled!")
 
 aantal_minuten = aantal_uren * een_uur
 
