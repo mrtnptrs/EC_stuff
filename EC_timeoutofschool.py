@@ -78,12 +78,14 @@ if calculate_day == "True":
         print(" *with",tussenuren_min,"minutes of tussenuren.")
     else:
         print(" *with no tussenuren.")
+        tussenuren_min = 0
 
     if kwt_question > 0:
         kwt_min = kwt_question * een_uur
         print(" *with",kwt_min,"minutes of kwt's.")
     else:
         print(" *with no kwt's.")
+        kwt_min = 0
 
     if pauze_tijd > 0:
         print(" *with",pauze_tijd,"minutes of pauzes.")
