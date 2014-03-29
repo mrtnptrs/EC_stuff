@@ -1,6 +1,5 @@
 #With this programm you can calculate the time you are out of the school at EC Boxmeer.
 
-debug = "False" #Let this program print the hours and some more info if it's true.
 calculate_day = "True" #Set to True to let it calculate your minutes you spend on tussenuren, kwt's, pauzes, lessons etc.
 
 aantal_uren_invoer = int(input("Until which hour do you have today? Only insert values 1 till 9."))
@@ -27,35 +26,27 @@ elif minirooster == "n":
 else:
     raise SystemExit("Error: wrong input of minirooster detected! Operation will now be cancelled!")
 
-if aantal_uren_invoer == 1 or aantal_uren_invoer == 2 or aantal_uren_invoer == 3: #Als je maar maximaal 3 uur hebt.
+if aantal_uren_invoer >=1 and aantal_uren_invoer <=3: #Als je maar maximaal 3 uur hebt.
     aantal_uren = aantal_uren_invoer
     pauze_tijd = 0
-    if debug == "True":
-        print(aantal_uren, "  1, 2, 3")
 
 elif aantal_uren_invoer>=4 and aantal_uren_invoer<=6 and minirooster == "y":
-    aantal_uren = aantal_uren_invoer   
+    aantal_uren = aantal_uren_invoer
     pauze_tijd = 20 #Eventuele kleine pauze meerekenen.
-    if debug == "True":
-        print(aantal_uren, "  4, 5, y")
 
 elif aantal_uren_invoer>=4 and aantal_uren_invoer<=5 and minirooster == "n":
-    aantal_uren = aantal_uren_invoer   
+    aantal_uren = aantal_uren_invoer
     pauze_tijd = 20 #Eventuele kleine pauze meerekenen.
     if debug == "True":
         print(aantal_uren, "  4, 5, n")
 
 elif aantal_uren_invoer>6 and aantal_uren_invoer<=9 and minirooster == "y":
-    aantal_uren = aantal_uren_invoer  
+    aantal_uren = aantal_uren_invoer
     pauze_tijd = 50 #Eventuele kleine en grote pauze meerekenen.
-    if debug == "True":
-        print(aantal_uren, "  six till nine, n")
 
 elif aantal_uren_invoer>=6 and aantal_uren_invoer<=9 and minirooster == "n":
     aantal_uren = aantal_uren_invoer
     pauze_tijd = 50 #Eventuele kleine en grote pauze meerekenen.
-    if debug == "True":
-        print(aantal_uren, "  six till nine, n")
 
 aantal_minuten = aantal_uren * een_uur + pauze_tijd
 
