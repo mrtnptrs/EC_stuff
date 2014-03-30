@@ -27,26 +27,21 @@ else:
     raise SystemExit("Error: wrong input of minirooster detected! Operation will now be cancelled!")
 
 if aantal_uren_invoer >=1 and aantal_uren_invoer <=3: #Als je maar maximaal 3 uur hebt.
-    aantal_uren = aantal_uren_invoer
     pauze_tijd = 0
 
 elif aantal_uren_invoer>=4 and aantal_uren_invoer<=6 and minirooster == "y":
-    aantal_uren = aantal_uren_invoer
     pauze_tijd = 20 #Eventuele kleine pauze meerekenen.
 
 elif aantal_uren_invoer>=4 and aantal_uren_invoer<=5 and minirooster == "n":
-    aantal_uren = aantal_uren_invoer
     pauze_tijd = 20 #Eventuele kleine pauze meerekenen.
 
 elif aantal_uren_invoer>6 and aantal_uren_invoer<=9 and minirooster == "y":
-    aantal_uren = aantal_uren_invoer
     pauze_tijd = 50 #Eventuele kleine en grote pauze meerekenen.
 
 elif aantal_uren_invoer>=6 and aantal_uren_invoer<=9 and minirooster == "n":
-    aantal_uren = aantal_uren_invoer
     pauze_tijd = 50 #Eventuele kleine en grote pauze meerekenen.
 
-aantal_minuten = aantal_uren * een_uur + pauze_tijd
+aantal_minuten = aantal_uren_invoer * een_uur + pauze_tijd
 
 totaal_uren = int((aantal_minuten+510)/60)  #510 minutes are the eight hours and 30 minutes from the time when the school begins.
 rest_minuten = int(aantal_minuten+510) % 60
