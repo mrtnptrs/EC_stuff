@@ -37,8 +37,6 @@ elif aantal_uren_invoer>=4 and aantal_uren_invoer<=6 and minirooster == "y":
 elif aantal_uren_invoer>=4 and aantal_uren_invoer<=5 and minirooster == "n":
     aantal_uren = aantal_uren_invoer
     pauze_tijd = 20 #Eventuele kleine pauze meerekenen.
-    if debug == "True":
-        print(aantal_uren, "  4, 5, n")
 
 elif aantal_uren_invoer>6 and aantal_uren_invoer<=9 and minirooster == "y":
     aantal_uren = aantal_uren_invoer
