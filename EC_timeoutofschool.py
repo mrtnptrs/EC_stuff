@@ -14,6 +14,8 @@ if calculate_day == "True":
 
     if aantal_uren_invoer <= tussenuren_question or aantal_uren_invoer < kwt_question:
         raise SystemExit("Error: you can't have more kwt's or tussenuren then your actual total of school hours!")
+    elif aantal_uren_invoer < (tussenuren_question + kwt_question):
+        raise SystemExit("Error: you can't have more kwt's and tussenuren then your actual total of school hours!")
 else:
     print("You set calculate_day to something else then True, your exact minutes you spend on what in a day won't be calculated.")
 
