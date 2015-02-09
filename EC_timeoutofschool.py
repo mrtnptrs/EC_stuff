@@ -1,25 +1,21 @@
 #With this programm you can calculate the time you are out of the school at EC Boxmeer.
 
-calculate_day = "True" #Set to True to let it calculate your minutes you spend on tussenuren, kwt's, pauzes, lessons etc.
-
 aantal_uren_invoer = int(input("Until which hour do you have today? Only insert values 1 till 9."))
 
 if aantal_uren_invoer < 1 or aantal_uren_invoer > 9:
     raise SystemExit("Error: input of numbers of hours is too low or too high, the operation will now be cancelled!")
 
-if calculate_day == "True":
-    tussenuren_question = int(input("Hoeveel tussenuren heb je? (van 0 tot 8 uur maximaal, 0 is geen een.)"))
 
-    kwt_question = int(input("Hoeveel kwt's heb je? (van 0 tot 8 uur maximaal, 0 is geen een.)"))
+tussenuren_question = int(input("Hoeveel tussenuren heb je? (van 0 tot 8 uur maximaal, 0 is geen een.)"))
 
-    if aantal_uren_invoer <= tussenuren_question or aantal_uren_invoer < kwt_question:
-        raise SystemExit("Error: you can't have more kwt's or tussenuren then your actual total of school hours!")
-    elif aantal_uren_invoer < (tussenuren_question + kwt_question):
-        raise SystemExit("Error: you can't have more kwt's and tussenuren then your actual total of school hours!")
-    else:
-        print("You set calculate_day to something else then True, your exact minutes you spend on what in a day won't be calculated.")
+kwt_question = int(input("Hoeveel kwt's heb je? (van 0 tot 8 uur maximaal, 0 is geen een.)"))
 
-        minirooster = input("Do you have minirooster (y/n)")
+if aantal_uren_invoer <= tussenuren_question or aantal_uren_invoer < kwt_question:
+    raise SystemExit("Error: you can't have more kwt's or tussenuren then your actual total of school hours!")
+elif aantal_uren_invoer < (tussenuren_question + kwt_question):
+    raise SystemExit("Error: you can't have more kwt's and tussenuren then your actual total of school hours!")
+
+minirooster = input("Do you have minirooster (y/n)")
 
 def uur_bepaling(minirooster):
 
@@ -67,32 +63,31 @@ eindtijd = str(totaal_uren) + ":" + str(rest_minuten) #The time you're out of sc
 
 print("You're out today at",eindtijd)
 
-def day_calculation(calculate_day, tussenuren_question, kwt_question, een_uur):
-    if calculate_day == "True":
+def day_calculation(tussenuren_question, kwt_question, een_uur):
 
-        print("You had spend today at school:")
+    print("You had spend today at school:")
 
-        if tussenuren_question > 0:
-            tussenuren_min = tussenuren_question * een_uur
-            print(" *with",tussenuren_min,"minutes of tussenuren.")
-        else:
-            print(" *with no tussenuren.")
-            tussenuren_min = 0
+    if tussenuren_question > 0:
+        tussenuren_min = tussenuren_question * een_uur
+        print(" *with",tussenuren_min,"minutes of tussenuren.")
+    else:
+        print(" *with no tussenuren.")
+        tussenuren_min = 0
 
-        if kwt_question > 0:
-            kwt_min = kwt_question * een_uur
-            print(" *with",kwt_min,"minutes of kwt's.")
-        else:
-            print(" *with no kwt's.")
-            kwt_min = 0
+    if kwt_question > 0:
+        kwt_min = kwt_question * een_uur
+        print(" *with",kwt_min,"minutes of kwt's.")
+    else:
+        print(" *with no kwt's.")
+        kwt_min = 0
 
-        if pauze_tijd > 0:
-            print(" *with",pauze_tijd,"minutes of pauzes.")
-        else:
-            print(" *with no pauzes.")
+    if pauze_tijd > 0:
+        print(" *with",pauze_tijd,"minutes of pauzes.")
+    else:
+        print(" *with no pauzes.")
 
-        les_minuten = aantal_minuten - kwt_min - pauze_tijd - tussenuren_min
-        print(" *with",les_minuten,"minutes of actual lessons.")
-        return print(" *with",les_minuten,"minutes of actual lessons.")
+    les_minuten = aantal_minuten - kwt_min - pauze_tijd - tussenuren_min
+    return print(" *with",les_minuten,"minutes of actual lessons.")
 
-day_calculation(calculate_day, tussenuren_question, kwt_question, een_uur)
+day_calculation(tussenuren_question, kwt_question, een_uur)
+
