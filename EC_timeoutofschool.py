@@ -1,21 +1,5 @@
 #With this programm you can calculate the time you are out of the school at EC Boxmeer.
 
-aantal_uren_invoer = int(input("Until which hour do you have today? Only insert values 1 till 9."))
-
-if aantal_uren_invoer < 1 or aantal_uren_invoer > 9:
-    raise SystemExit("Error: input of numbers of hours is too low or too high, the operation will now be cancelled!")
-
-tussenuren_question = int(input("Hoeveel tussenuren heb je? (van 0 tot 8 uur maximaal, 0 is geen een.)"))
-
-kwt_question = int(input("Hoeveel kwt's heb je? (van 0 tot 8 uur maximaal, 0 is geen een.)"))
-
-if aantal_uren_invoer <= tussenuren_question or aantal_uren_invoer < kwt_question:
-    raise SystemExit("Error: you can't have more kwt's or tussenuren then your actual total of school hours!")
-elif aantal_uren_invoer < (tussenuren_question + kwt_question):
-    raise SystemExit("Error: you can't have more kwt's and tussenuren then your actual total of school hours!")
-
-minirooster = input("Do you have minirooster (y/n)")
-
 def uur_bepaling(minirooster):
 
     if minirooster == "y":  #How long a school hour is with or without minirooster.
@@ -26,8 +10,6 @@ def uur_bepaling(minirooster):
         raise SystemExit("Error: wrong input of minirooster detected! Operation will now be cancelled!")
 
     return een_uur
-
-een_uur = uur_bepaling(minirooster)
 
 def pauze(aantal_uren_invoer, minirooster):
 
@@ -48,8 +30,6 @@ def pauze(aantal_uren_invoer, minirooster):
 
     return pauze_tijd
 
-pauze_tijd = pauze(aantal_uren_invoer, minirooster)
-
 def eindtijd(aantal_uren_invoer, een_uur, pauze_tijd):
     aantal_minuten = aantal_uren_invoer * een_uur + pauze_tijd
 
@@ -63,8 +43,6 @@ def eindtijd(aantal_uren_invoer, een_uur, pauze_tijd):
 
     print("You're out today at",eindtijd)
     return aantal_minuten
-
-aantal_minuten = eindtijd(aantal_uren_invoer, een_uur, pauze_tijd)
 
 def day_calculation(tussenuren_question, kwt_question, een_uur):
 
@@ -91,5 +69,27 @@ def day_calculation(tussenuren_question, kwt_question, een_uur):
 
     les_minuten = aantal_minuten - kwt_min - pauze_tijd - tussenuren_min
     return print(" *with",les_minuten,"minutes of actual lessons.")
+
+aantal_uren_invoer = int(input("Until which hour do you have today? Only insert values 1 till 9."))
+
+if aantal_uren_invoer < 1 or aantal_uren_invoer > 9:
+    raise SystemExit("Error: input of numbers of hours is too low or too high, the operation will now be cancelled!")
+
+tussenuren_question = int(input("Hoeveel tussenuren heb je? (van 0 tot 8 uur maximaal, 0 is geen een.)"))
+
+kwt_question = int(input("Hoeveel kwt's heb je? (van 0 tot 8 uur maximaal, 0 is geen een.)"))
+
+if aantal_uren_invoer <= tussenuren_question or aantal_uren_invoer < kwt_question:
+    raise SystemExit("Error: you can't have more kwt's or tussenuren then your actual total of school hours!")
+elif aantal_uren_invoer < (tussenuren_question + kwt_question):
+    raise SystemExit("Error: you can't have more kwt's and tussenuren then your actual total of school hours!")
+
+minirooster = input("Do you have minirooster (y/n)")
+
+een_uur = uur_bepaling(minirooster)
+
+pauze_tijd = pauze(aantal_uren_invoer, minirooster)
+
+aantal_minuten = eindtijd(aantal_uren_invoer, een_uur, pauze_tijd)
 
 day_calculation(tussenuren_question, kwt_question, een_uur)
