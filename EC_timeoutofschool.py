@@ -1,5 +1,11 @@
 #With this programm you can calculate the time you are out of the school at EC Boxmeer.
 
+def check_kwt_tussenuren(kwt_question, aantal_uren_invoer, tussenuren_question):
+    if aantal_uren_invoer <= tussenuren_question or aantal_uren_invoer < kwt_question:
+        raise SystemExit("Error: you can't have more kwt's or tussenuren then your actual total of school hours!")
+    elif aantal_uren_invoer < (tussenuren_question + kwt_question):
+        raise SystemExit("Error: you can't have more kwt's and tussenuren then your actual total of school hours!")
+
 def uur_bepaling(minirooster):
 
     if minirooster == "y":  #How long a school hour is with or without minirooster.
@@ -79,10 +85,7 @@ tussenuren_question = int(input("Hoeveel tussenuren heb je? (van 0 tot 8 uur max
 
 kwt_question = int(input("Hoeveel kwt's heb je? (van 0 tot 8 uur maximaal, 0 is geen een.)"))
 
-if aantal_uren_invoer <= tussenuren_question or aantal_uren_invoer < kwt_question:
-    raise SystemExit("Error: you can't have more kwt's or tussenuren then your actual total of school hours!")
-elif aantal_uren_invoer < (tussenuren_question + kwt_question):
-    raise SystemExit("Error: you can't have more kwt's and tussenuren then your actual total of school hours!")
+check_kwt_tussenuren(kwt_question, aantal_uren_invoer, tussenuren_question)
 
 minirooster = input("Do you have minirooster (y/n)")
 
