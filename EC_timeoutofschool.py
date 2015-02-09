@@ -5,7 +5,6 @@ aantal_uren_invoer = int(input("Until which hour do you have today? Only insert 
 if aantal_uren_invoer < 1 or aantal_uren_invoer > 9:
     raise SystemExit("Error: input of numbers of hours is too low or too high, the operation will now be cancelled!")
 
-
 tussenuren_question = int(input("Hoeveel tussenuren heb je? (van 0 tot 8 uur maximaal, 0 is geen een.)"))
 
 kwt_question = int(input("Hoeveel kwt's heb je? (van 0 tot 8 uur maximaal, 0 is geen een.)"))
@@ -51,17 +50,21 @@ def pauze(aantal_uren_invoer, minirooster):
 
 pauze_tijd = pauze(aantal_uren_invoer, minirooster)
 
-aantal_minuten = aantal_uren_invoer * een_uur + pauze_tijd
+def eindtijd(aantal_uren_invoer, een_uur, pauze_tijd):
+    aantal_minuten = aantal_uren_invoer * een_uur + pauze_tijd
 
-totaal_uren = int((aantal_minuten+510)/60)  #510 minutes are the eight hours and 30 minutes from the time when the school begins.
-rest_minuten = int(aantal_minuten+510) % 60
+    totaal_uren = int((aantal_minuten+510)/60)  #510 minutes are the eight hours and 30 minutes from the time when the school begins.
+    rest_minuten = int(aantal_minuten+510) % 60
 
-if rest_minuten == 0: #Hack: to let python display times like 11:00 correctly.
-    rest_minuten = "00"
+    if rest_minuten == 0: #Hack: to let python display times like 11:00 correctly.
+        rest_minuten = "00"
 
-eindtijd = str(totaal_uren) + ":" + str(rest_minuten) #The time you're out of school.
+    eindtijd = str(totaal_uren) + ":" + str(rest_minuten) #The time you're out of school.
 
-print("You're out today at",eindtijd)
+    print("You're out today at",eindtijd)
+    return aantal_minuten
+
+aantal_minuten = eindtijd(aantal_uren_invoer, een_uur, pauze_tijd)
 
 def day_calculation(tussenuren_question, kwt_question, een_uur):
 
@@ -90,4 +93,3 @@ def day_calculation(tussenuren_question, kwt_question, een_uur):
     return print(" *with",les_minuten,"minutes of actual lessons.")
 
 day_calculation(tussenuren_question, kwt_question, een_uur)
-
