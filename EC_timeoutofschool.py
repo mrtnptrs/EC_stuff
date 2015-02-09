@@ -16,32 +16,44 @@ if calculate_day == "True":
         raise SystemExit("Error: you can't have more kwt's or tussenuren then your actual total of school hours!")
     elif aantal_uren_invoer < (tussenuren_question + kwt_question):
         raise SystemExit("Error: you can't have more kwt's and tussenuren then your actual total of school hours!")
-else:
-    print("You set calculate_day to something else then True, your exact minutes you spend on what in a day won't be calculated.")
+    else:
+        print("You set calculate_day to something else then True, your exact minutes you spend on what in a day won't be calculated.")
 
-minirooster = input("Do you have minirooster (y/n)")
+        minirooster = input("Do you have minirooster (y/n)")
 
-if minirooster == "y":  #How long a school hour is with or without minirooster.
-    een_uur = 40
-elif minirooster == "n":
-    een_uur = 50
-else:
-    raise SystemExit("Error: wrong input of minirooster detected! Operation will now be cancelled!")
+def uur_bepaling(minirooster):
 
-if aantal_uren_invoer >=1 and aantal_uren_invoer <=3: #Als je maar maximaal 3 uur hebt.
-    pauze_tijd = 0
+    if minirooster == "y":  #How long a school hour is with or without minirooster.
+        een_uur = 40
+    elif minirooster == "n":
+        een_uur = 50
+    else:
+        raise SystemExit("Error: wrong input of minirooster detected! Operation will now be cancelled!")
 
-elif aantal_uren_invoer>=4 and aantal_uren_invoer<=6 and minirooster == "y":
-    pauze_tijd = 20 #Eventuele kleine pauze meerekenen.
+    return een_uur
 
-elif aantal_uren_invoer>=4 and aantal_uren_invoer<=5 and minirooster == "n":
-    pauze_tijd = 20 #Eventuele kleine pauze meerekenen.
+een_uur = uur_bepaling(minirooster)
 
-elif aantal_uren_invoer>6 and aantal_uren_invoer<=9 and minirooster == "y":
-    pauze_tijd = 50 #Eventuele kleine en grote pauze meerekenen.
+def pauze(aantal_uren_invoer, minirooster):
 
-elif aantal_uren_invoer>=6 and aantal_uren_invoer<=9 and minirooster == "n":
-    pauze_tijd = 50 #Eventuele kleine en grote pauze meerekenen.
+    if aantal_uren_invoer >=1 and aantal_uren_invoer <=3: #Als je maar maximaal 3 uur hebt.
+        pauze_tijd = 0
+
+    elif aantal_uren_invoer>=4 and aantal_uren_invoer<=6 and minirooster == "y":
+        pauze_tijd = 20 #Eventuele kleine pauze meerekenen.
+
+    elif aantal_uren_invoer>=4 and aantal_uren_invoer<=5 and minirooster == "n":
+        pauze_tijd = 20 #Eventuele kleine pauze meerekenen.
+
+    elif aantal_uren_invoer>6 and aantal_uren_invoer<=9 and minirooster == "y":
+        pauze_tijd = 50 #Eventuele kleine en grote pauze meerekenen.
+
+    elif aantal_uren_invoer>=6 and aantal_uren_invoer<=9 and minirooster == "n":
+        pauze_tijd = 50 #Eventuele kleine en grote pauze meerekenen.
+
+    return pauze_tijd
+
+pauze_tijd = pauze(aantal_uren_invoer, minirooster)
 
 aantal_minuten = aantal_uren_invoer * een_uur + pauze_tijd
 
@@ -55,28 +67,32 @@ eindtijd = str(totaal_uren) + ":" + str(rest_minuten) #The time you're out of sc
 
 print("You're out today at",eindtijd)
 
-if calculate_day == "True":
+def day_calculation(calculate_day, tussenuren_question, kwt_question, een_uur):
+    if calculate_day == "True":
 
-    print("You had spend today at school:")
+        print("You had spend today at school:")
 
-    if tussenuren_question > 0:
-        tussenuren_min = tussenuren_question * een_uur
-        print(" *with",tussenuren_min,"minutes of tussenuren.")
-    else:
-        print(" *with no tussenuren.")
-        tussenuren_min = 0
+        if tussenuren_question > 0:
+            tussenuren_min = tussenuren_question * een_uur
+            print(" *with",tussenuren_min,"minutes of tussenuren.")
+        else:
+            print(" *with no tussenuren.")
+            tussenuren_min = 0
 
-    if kwt_question > 0:
-        kwt_min = kwt_question * een_uur
-        print(" *with",kwt_min,"minutes of kwt's.")
-    else:
-        print(" *with no kwt's.")
-        kwt_min = 0
+        if kwt_question > 0:
+            kwt_min = kwt_question * een_uur
+            print(" *with",kwt_min,"minutes of kwt's.")
+        else:
+            print(" *with no kwt's.")
+            kwt_min = 0
 
-    if pauze_tijd > 0:
-        print(" *with",pauze_tijd,"minutes of pauzes.")
-    else:
-        print(" *with no pauzes.")
+        if pauze_tijd > 0:
+            print(" *with",pauze_tijd,"minutes of pauzes.")
+        else:
+            print(" *with no pauzes.")
 
-    les_minuten = aantal_minuten - kwt_min - pauze_tijd - tussenuren_min
-    print(" *with",les_minuten,"minutes of actual lessons.")
+        les_minuten = aantal_minuten - kwt_min - pauze_tijd - tussenuren_min
+        print(" *with",les_minuten,"minutes of actual lessons.")
+        return print(" *with",les_minuten,"minutes of actual lessons.")
+
+day_calculation(calculate_day, tussenuren_question, kwt_question, een_uur)
