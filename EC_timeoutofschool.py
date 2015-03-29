@@ -1,4 +1,5 @@
 #With this programm you can calculate the time you are out of the school at EC Boxmeer.
+#Made in 2014-2015.
 
 def check_kwt_tussenuren(kwt_question, aantal_uren_invoer, tussenuren_question):
     if aantal_uren_invoer <= tussenuren_question or aantal_uren_invoer < kwt_question:
