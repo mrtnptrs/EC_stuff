@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--<meta charset="windows-1252">-->
+		<meta charset="ISO-8859-1">
+		<title>EC-spel!</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> <!--Voor de progressbars-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> <!--Voor de progressbars-->
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> <!--Voor de progressbars-->
+		<link rel="stylesheet" type="text/css" href="css/stylesheet.css"> <!--Eigen stylesheet-->
+		<link rel="prefetch" href="img/smileygoed.png"> <!--Laadt smilies vantevoren, zodat de overgang vloeiender is-->
+		<link rel="prefetch" href="img/smileytwijfel.png">
+		<link rel="prefetch" href="img/smileyfout.png">
+	</head>
+
+		<body>
+			<img src="img/logo-boxmeer.gif" alt="logo" id="logo" />
+			
+			<section id="welkom" >
+					<article>
+					<header><h2>Ontdek het Elzendaal!</h2></header>
+						<noscript>
+							Javascript staat uitgeschakeld in je brouwser! Om deze site optimaal te gebruiken is het noodzakelijk om Javascript aan te zetten.
+							<a href="http://www.enable-javascript.com/nl/" target="_blank">
+							Hier vind je instructies over hoe je Javascript activeert in je web browser</a>.
+						</noscript>
+						<img src="img/stationsweg.jpg" alt="Stationsweg" id="logo" />
+						<p id="inleiding"> 
+						Het is de eerste schooldag van je nieuwe middelbare school. Je ziet er tegenop. Je hebt al vele verhalen gehoord over de gevreesde school: het Elzendaalcollege.
+						In de vakantie heb je nog genoten van al je vrije tijd. Je beseft dat het vanaf nu anders gaat worden. Je hoopt dat je nieuwe vrienden gaat ontmoeten. 
+						Dit natuurlijk omdat je niet zo eenzaam wilt lijken op school. Hierdoor kom je stoerder over. Je hebt de nacht van te voren ook niet goed kunnen slapen. 
+						Je had een nachtmerrie gehad over het 'Elzendaalcollege'. Je zat te dromen dat je op de WC in slaap bent gevallen en dat een IBN'er de deur moest openbreken. 
+						Je schaamde je rot. Uiteindelijk werd je wakker en stond je op. Je stouwde een paar bammen naar binnen en ging toch met veel volle moed naar school. 
+						Onderweg naar school kom je al een paar stoere jongens tegen. Zij lopen te blaken in het steegje. Eenmaal aangekomen op school loop je de deur binnen en struikel je over de deurmat. 
+						Iedereen lacht je uit en jij schiet ook in de lach zodat je niet stom lijkt. Het nieuwe leven op de school kan beginnen! 
+						</p>
+						<br>
+						<p>
+						Hieronder kun je de moeilijkheidsgraad kiezen. Bij makkelijk worden positieve scores steeds hoger en je negatieve scores ook (dus steeds minder negatief.) Bij moeilijk worden je positieve scores lager
+						en je negatieve scores ook (dus steeds negatiever.) Bij makkelijk begin je met een score van 55, bij gemiddeld met een score van 45 en bij moeilijk met een score van 35.
+						</p>
+						<br>
+						<p id="moeilijkheidsgraadstring">
+						Klik op een van de moeilijkheidsgraden om de moeilijkheidsgraad te kiezen, hierna krijg je uitleg en daarna begint het spel:
+						</p>
+						<input class="buttons" type="button" onClick="starten(55);" value="Makkelijk"/>
+						<input id="gemakkelijk" class="buttons" type="button" onClick="starten(45);" value="Gemiddeld"/>
+						<input class="buttons" type="button" onClick="starten(35);" value="Moeilijk"/>
+						<br>
+						<input id="geluidbuttonwelkom" class="buttons" type="button" onClick="geluidaanuitknop();" value="Geluid uitzetten"/>
+					</article>
+			</section>
+			
+			<div id="container1">
+				<!--In de asides: id="eraferbijxxxx" geeft het scoreverschil voor elk weer na het beantwoorden van de vraag-->
+				<div id="asides"><aside class="speler">
+					<header><h2 id="naam">Speler</h2></header>
+					<img src="img/smileytwijfel.png" alt="smiley" id="smileyspeler" width="100px"/>
+					<p id="eraferbijspeler"><p>
+					<div class="progress">
+					  <div id="progressspeler" class="progress-bar progress-bar-warning progress-bar-striped active" role="progressbar"
+					  aria-valuemin="0" aria-valuemax="100" style="width:50%">
+						50
+					  </div>
+					</div>
+				</aside>
+				
+				<aside class="ouders">
+					<header><h2>Ouders</h2></header>
+					<img src="img/smileytwijfel.png" alt="smiley" id="smileyouders" width="100px"/>
+					<p id="eraferbijouders"><p>
+					<div class="progress">
+					  <div id="progressouders" class="progress-bar progress-bar-warning progress-bar-striped active" role="progressbar"
+					  aria-valuemin="0" aria-valuemax="100" style="width:50%">
+						50
+					  </div>
+					</div>
+				</aside>
+				
+				<aside class="johannes">
+					<header><h2>Johannes de Lange</h2></header>
+					<img src="img/smileytwijfel.png" alt="smiley" id="smileyjohannes" width="100px"/>
+					<p id="eraferbijjohannes"><p>
+					<div class="progress">
+					  <div id="progressjohannes" class="progress-bar progress-bar-warning progress-bar-striped active" role="progressbar"
+					  aria-valuemin="0" aria-valuemax="100" style="width:50%">
+						50
+					  </div>
+					</div>
+				</aside>
+				</div>
+				
+				<aside class="over en opties">
+					<header><h2>Opties en over</h2></header>
+					<p id="spelmodus"></p>
+					<input id="geluidbutton" class="buttons" type="button" onClick="geluidaanuitknop();" value="Geluid uitzetten"/>
+					<input id="naambutton" title="Geef jezelf een nieuwe naam. Pssssst, hiermee kun je de CHEATs activeren!" class="buttons" type="button" value="Nieuwe spelersnaam kiezen"/>
+					<div id="allecheats">
+						<input id="cheat" title="Zet de waardes van jezelf, ouders en Johannes allemaal op 100. Handig bij het testen van het spel of gewoon om lekker vals te spelen." class="buttons" type="button" onclick="scoreset(100, 100, 100);" value="Cheat: alle waardes 100!"/>
+						<input id="godmode" title="Dit aanzetten zorgt ervoor dat je niet veliest als een score op nul komt, zodat je helemaal door kunt tot en met de laatste vraag. Na de laatste vraag win je dan. Je kunt dit tijdens het spelen ook deactiveren, zodat je weer gewoon verder kunt spelen en dan wel weer kunt verliezen."
+						class="buttons" type="button" value="Godmode aanzetten"/>
+						<input id="moeilijkheidsgraadcheat" title="Handig voor testdoeleinde of gewoon om je keuze opnieuw te maken, zonder opnieuw te hoeven beginnen. Maakt de moeilijkheidsgraden zichtbaar, zodat je erop kunt klikken en deze aan kunt passen. Druk daarna nogmaals op deze knop om de moeilijkheidsgraad-buttons weer onzichtbaar te maken." class="buttons" type="button" onClick="cheatmoeilijkheid();" value="Andere moeilijkheidsgraad kiezen"/>
+						<input id="cheatmakkelijk"class="buttons" type="button" onClick="var moeilijkheid = document.getElementById('spelmodus'); moeilijkheid.innerHTML = 'Spelmodus: makkelijk';" value="Makkelijk"/>
+						<input id="cheatgemiddeld" class="buttons" type="button" onClick="var moeilijkheid = document.getElementById('spelmodus'); moeilijkheid.innerHTML = 'Spelmodus: gemiddeld';" value="Gemiddeld"/>
+						<input id="cheatmoeilijk" class="buttons" type="button" onClick="var moeilijkheid = document.getElementById('spelmodus'); moeilijkheid.innerHTML = 'Spelmodus: moeilijk';" value="Moeilijk"/>
+					</div>
+					<p>Gemaakt door: Martijn Peters, Maarten Peters en Ruud Albers</p>
+					<p>Versie: 1.0.7</p>
+				</aside>
+				
+				<div id="container2">
+					<section id="vragenscherm">
+						<article>
+							<header><h2>Keep EC Happy!</h2></header>
+								<noscript> <!--Wordt weergeven als javascript niet is ingeschakeld-->
+									Javascript staat uitgeschakeld in je brouwser! Om deze site optimaal te gebruiken is het noodzakelijk om Javascript aan te zetten.
+									<a href="http://www.enable-javascript.com/nl/" target="_blank">
+									Hier vind je instructies over hoe je Javascript activeert in je web browser</a>.
+								</noscript>
+								<div id="instructies">
+									<p class="vet">Instructies:<p>
+									<p>Het doel van dit spel is dus om keuzes te maken en iedereen tevreden te houden. Dit doe je door de waardes, die je aan de linkerzijde van het scherm ziet,
+									zo hoog mogelijk te houden. De smilies en de statusbalk (en het getal dat erin staat) geven aan hoeveel je score op dit moment bedraagt. Je krijgt dus vragen voorgeschoteld en de scores
+									zullen hoger, lager of gelijk blijven. Het scoreverschil zal iedere keer, na het beantwoorden van de vraag ook aan de linkerkant van het scherm weergeven worden, in de vakken.</p>
+									<p>
+									Je kunt antwoorden geven door op een van de genummerde knoppen te drukken, het nummer dat overeenkomt met de keuze die je wilt maken. Druk op de onderstaande knop om het spel te spelen!
+									</p>
+									<input class="buttons" id="knopinstructies" type="button" value="Je kunt eindelijk starten!"/>
+								</div>
+								<span id="vragen">
+									<p id="context"></p> <!--Voor context, vragen en de mogelijke antwoorden-->
+									<br>
+									<p id="vraag">rgrgrgrg</p>
+									<p id="antwoord1">grgrgrgr</p>
+									<p id="antwoord2">rgggggr</p>
+									<p id="antwoord3">grrgre</p>
+									<p id="antwoord4">rgre</p>
+									<p id="antwoord5">rgrer</p>
+									<div class="buttons">
+										<button class="button" id="button1" ><span>1.</span></button> <!--Vijf buttons om antwoorden mee te geven-->
+										<button class="button" id="button2"><span>2.</span></button>
+										<button class="button" id="button3"><span>3.</span></button>
+										<button class="button" id="button4"><span>4.</span></button>
+										<button class="button" id="button5" ><span>5.</span></button>
+									</div>
+								</span>
+								<input class="buttons" title="Je gaat hierdoor naar het beginscherm, je kunt een andere moeilijkheidsgraad kiezen en je begint weer bij vraag 1. Wel blijft je naam onthouden, maar deze kun je veranderen naar wens tijdens het spelen." type="button" onClick="reset()" value="Start het spel opnieuw!"/> <!--Resetknop om het spel te herstarten-->
+					</section>
+					
+					<section id="eind">
+							<article>
+							<header><h2 id="titel"></h2></header>
+								<noscript>
+									Javascript staat uitgeschakeld in je brouwser! Om deze site optimaal te gebruiken is het noodzakelijk om Javascript aan te zetten.
+									<a href="http://www.enable-javascript.com/nl/" target="_blank">
+									Hier vind je instructies over hoe je Javascript activeert in je web browser</a>.
+								</noscript>
+								<img src="img/stationsweg.jpg" alt="Stationsweg" id="logo" />
+								<p id="inhoud"> 
+								</p>
+								<input id="reseteind" title="Je gaat hierdoor naar het beginscherm, je kunt een andere moeilijkheidsgraad kiezen en je begint weer bij vraag 1. Wel blijft je naam onthouden, maar deze kun je veranderen naar wens tijdens het spelen." class="buttons" type="button" onClick="reset()" value="Start het spel opnieuw!"/>
+								<input id="geluidbuttoneind" class="buttons" type="button" onClick="geluidaanuitknop();" value="Geluid uitzetten"/>
+							</article>
+					</section>
+					
+					</div>
+				
+			</div>
+			
+		<script src="ecspel.js"></script>
+		</body>
+
+</html>

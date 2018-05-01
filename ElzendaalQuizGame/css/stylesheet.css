@@ -1,0 +1,165 @@
+﻿#container1 {
+    margin-left:auto;
+    margin-right:auto;
+	width:1250px;
+    /*border-radius:25px;
+	background-color:#C2E2F2;*/
+	display:block;
+	padding:10px;
+}
+#container2 {
+    margin-left:auto;
+    margin-right:auto;
+    width:915px;
+    border-radius:25px;
+	background-color:#C2E2F2;
+	display:inline-block;
+	vertical-align:top;
+	padding-bottom:10px;
+	transition:margin-top 0.8s;
+}
+#container2>section > article > header, #welkom > article > header, #eind > article > header{display:block;background-color:#2F69C0;padding:5px 5px 5px 15px;font-size:21px;color:white;border-top-left-radius:25px;border-top-right-radius:25px;margin-top:0px;margin-bottom:5px;}
+aside > header{margin-bottom:5px;}
+#container2> section > article > header> h2, #welkom > article > header> h2, #eind > article > header> h2{font-weight:bold;font-size:37px;margin-bottom:5px;margin-top:5px;}
+#container2> section > article > #vragen > p, #welkom > article > p, #eind > article > p{margin-bottom:0px;padding-right:15px}
+#container2> section > article, #welkom > article, aside, #eind > article, aside{padding-bottom:5px;}
+.progress{display:block;height:22px;margin:9px;margin-top:5px;}
+#progressspeler, #progressouders, #progressjohannes{font-weight: bold;font-size:14px;}
+#eraferbijspeler, #eraferbijouders, #eraferbijjohannes{font-weight: bold;}
+#smileyspeler, #smileyouders, #smileyjohannes{margin-left:9px;}
+
+#vraag{font-weight: bold;font-size:20px;}
+#antwoord1, #antwoord2, #antwoord3, #antwoord4, #antwoord5{
+	padding-left:30px;
+}
+
+button:disabled {
+    background: #dddddd;
+}
+
+div {
+    display:block;
+}
+
+#welkom{
+	margin-left:auto;
+    margin-right:auto;
+    width:1200px;
+    border-radius:25px;
+	background-color:#C2E2F2;
+	display:block;
+	vertical-align:top;
+	padding-bottom:10px;
+	transition:margin-top 0.8s;
+}
+
+body { 
+    /*background-color:#272e63;
+	background-size: cover;*/ 
+    background-size:cover;
+	background-repeat:no-repeat;
+	background-image: url("../img/elzendaalboxmeer.jpg");
+    color: black;
+    font-family: arial, sans-serif;
+    font-size: 16px;
+
+}
+
+.vet{
+    font-weight: bold;
+}
+
+p, h1, noscript {padding-left:15px;}
+
+p, noscript {
+	display: block;}
+
+noscript{
+	color:red;
+	font-weight:bold;
+}
+
+h1 {
+	font-size:25px;
+	padding-top:8px;
+}
+
+#logo{
+	display:block;
+	margin-left: auto;
+    margin-right: auto;
+	margin-top:15px;
+	margin-bottom:15px;
+	width: 400px;
+}
+
+aside{float:left;clear:both;display:inline-block;vertical-align:top;margin:0px 10px 10px 0px;border-radius:25px;width:300px;background-color:#C2E2F2;transition:margin-top 0.8s;}
+aside > header > h2{font-weight:bold;background-color:#2F69C0;margin-bottom:0px;margin-top:0px;padding:5px 5px 5px 15px;font-size:21px;color:white;border-top-left-radius:25px;border-top-right-radius:25px;}
+aside > p{padding:0px 15px 0px 15px; margin-bottom:0px;}
+
+.buttons{display:block;text-align:center;margin-left:auto;margin-right:auto;margin-top:5px;}
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 150px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  vertical-align:middle;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 18px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+.disabled { 
+    opacity: 0.5;
+}
+
+.typed-cursor{
+    opacity: 1;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+}
+@keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-moz-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
